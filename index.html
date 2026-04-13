@@ -4,9 +4,59 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
+        <title>Cat Witch Mission</title>
+        <link rel="stylesheet" href="/style.css">
     </head>
     <body>
-        <script src="index.js"></script>
+
+        <!--START SCREEN-->
+        <div id="start-screen" class="container">
+            <img src="images-in-game/items-game/item-title-text.png" width="500" alt="logo">
+            <p class="greetings">Welcome to the Cat Witch Mission</p>
+            <br>
+            <p class="story">Our cat witch, as a loyal companion, needs your help in order to save its witch friend which was taken captive by the evil witch. <img src="images-in-game/evil-witch-game/Clarice-noctural-creature-hunter-Run.png"></p>
+            <p class="choose-character"><!--Choose--> Your Cat
+            <br>
+            <img src="images-in-game/cats-game/cat-witch-flying.png"> <!--<img src="images-in-game/cats-game/cat-witch-vampire.png">-->
+            </p>
+            <p class="rules">How to Play  <!--add img of the arrow keys and other elements images-->
+                <ul class="game-play-rules">
+                    <li>Move the cat witch by using the up and down arrow keys. <img src="images-in-game/items-game/item-button-up.png"> <img src="images-in-game/items-game/item-button-down.png"></li>
+                    <li>Collect the potions ans the spell books for 10 points. <img src"images-in-game/items-game/item-potion.png"> <img src="images-in-game/items-game/item-book.png"></li>
+                    <!--Collect the catnip for 2 seconds boost and extra 5 points. <img src="images-in-game/items-game/item-catnip.png"> </li>-->
+                    <li>Avoid the evil spells shots from the evil witch.<img src="images-in-game/items-game/item-evil-spell.png"> </li>
+                    <!--<li>Try to avoid sleep symbols as it stops your movement for 3 seconds. img src="images-in-game/items-game/item-sleep-spell.png"> </li>-->
+                    <li>If you hit the evil spells three times: GAME OVER!</li>
+                    <li>If you want to play again, just simply click on the replay button. <img src="images-in-game/items-game/item-button-replay.png"> </li>
+                </ul>
+            </p>
+            <button id="start-btn">Start</button>
+        </div>
+
+        <!--GAME SCREEN-->
+        <div id="game-screen" class="container">
+            <!-- Game elements like score, lives and if possible, other UI elements should be here (inside the game-scree but outside the game-box)-->
+
+            <p>Score: <span id="score">0 <img src="images-in-game/items-game/item-game-score.png"></span></p>
+            <p>Lives: <span id="lives">3 <img src="images-in-game/items-game/item-heart.png"></span></p>
+
+            <div id="game-box">
+            <!-- Game elements will be added here via JS and DOM manipulation-->    
+            </div>
+
+        </div>
+
+        <!--GAME OVER SCREEN-->
+        <div id="game-over-screen" class="container">
+            <img src="images-in-game/items-game/item-gameOver-text.png" width="500" alt="logo">
+            <p class="game-over-text">Cat Witch Failed. Evil Witch Succeeded</p>
+            <button id="replay-btn" img src="images-in-game/items-game/item-button-replay.png"></button> >Replay</button>
+        </div>
+
+        <script src="js/Cats.js"></script>
+        <script src="js/Collectibles.js"></script>
+        <script src="js/Obstacles.js"></script>
+        <script src="js/Witch.js"></script>
+        <script src="js/MainGame.js"></script>
     </body>
 </html>

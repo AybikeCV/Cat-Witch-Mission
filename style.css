@@ -1,0 +1,134 @@
+body {
+    margin: 0;
+    background-image: url("images-in-game/backgrounds-game/game-start/HR_Dark Gothic Castle.png");
+    background-size: auto;
+}
+
+#start-screen {
+    position: relative;
+    overflow: hidden;
+    user-select: none;
+}
+
+#start-btn {
+    background-color: darkgreen;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    padding: 15px;
+    font-size: 25px;
+    margin-top: 0px;
+    border-radius: 10px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#start-screen .greetings {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    margin-top: 0px;
+    margin-bottom: 0
+}
+
+#start-screen .story {
+    margin-top: 0px;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+#start-screen .choose-character {
+    margin-top: 0px;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
+}
+
+.choose-character img {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    height: 125px;
+    width: 125px;
+}
+    /*img:hover{
+        transform: rotateY(360deg);
+        transition: 2s;
+} white shadow*/
+    
+
+#start-screen .rules {
+    margin-top: 0px;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
+    align-content: center;
+}
+
+#start-screen .game-play-rules {
+    margin-top: 0px;
+    margin-bottom: 5px;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
+    align-content: center;
+}
+
+#game-box {
+    background-image: url(images-in-game/backgrounds-game/game-screen/4.jpg);
+    background-size: cover;
+    width:600px;
+    height:400px;
+
+  position: relative; /* allows us to position inner elements (absolute) related the the game-box */
+  overflow: hidden; /* prevents elements to visually exit the game-box */
+  user-select: none; /* prevents elements inside the game-box to be highlighted. This improves the user experience for click events on the game-box */
+}
+
+#game-box * {
+  pointer-events: none; /* prevents elements in the game-box to be dragged. This improves the user experience for click events on the game-box  */
+}
+
+#game-over-screen {
+    background-image: url("images-in-game/backgrounds-game/game-over-screen/castleinthedarkflippeddown-gameover2.png");
+}
+
+#game-over-screen .game-over-text {
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    font-size: 50px;   
+}
+
+#game-over-scren img {
+    height: 50px;
+    width: 50px;
+}
+
+#replay-btn {
+    background-color: darkgreen;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    padding: 15px;
+    font-size: 25px;
+    margin-top: 0px;
+    border-radius: 10px;
+}
+
+#game-screen, #game-over-screen {
+  display: none;
+}
+
+
+
+
