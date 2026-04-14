@@ -1,15 +1,15 @@
-class Witch {
+class Cat {
 
     constructor() {
 
         this.node = document.createElement("img");
-        this.node.src = "images-in-game/evil-witch-game/Clarice-noctural-creature-hunter-Run.png";
+        this.node.src = "images-in-game/cats-game/cat-witch-flying.png";
         gameBoxNode.append(this.node);
 
-        this.x = 1070;
-        this.y = 0;
+        this.x = 50;
+        this.y = 300;
         this.width = 125;
-        this.height = 150;
+        this.height = 125;
         
         this.node.style.width = `${this.width}px`;
         this.node.style.height = `${this.height}px`;
@@ -19,17 +19,10 @@ class Witch {
 
         this.directionX = 0
         this.directionY = 0
-
-        this.speed = 3
-        isMovingDown = true
-        isMovingUp = true
-        
     }
 
-        automaticMovement() {
-        this.y += this.speed
-        this.node.style.top = `${this.y}px`
-      }
+    move() {
+
     }
 
-    
+}

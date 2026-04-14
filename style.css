@@ -85,11 +85,28 @@ body {
     align-content: center;
 }
 
+#game-screen {
+    position: relative;
+    overflow: hidden;
+    user-select: none;
+}
+
+#game-screen p {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
+    margin-top: 50px;
+    margin-bottom: 0px;
+}
+
 #game-box {
     background-image: url(images-in-game/backgrounds-game/game-screen/4.jpg);
     background-size: cover;
-    width:600px;
-    height:400px;
+    width: 1220px;
+    height: 710px;
+    margin: 100px;
+    border: 5px solid darkolivegreen;
+    border-radius: 10px;
 
   position: relative; /* allows us to position inner elements (absolute) related the the game-box */
   overflow: hidden; /* prevents elements to visually exit the game-box */
