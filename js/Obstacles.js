@@ -7,8 +7,8 @@ class Obstacles {
 
     this.x = xPosition
     this.y = yPosition
-    this.width = 75
-    this.height = 75
+    this.width = 60
+    this.height = 60
 
     this.node.style.width = `${this.width}px`
     this.node.style.height = `${this.height}px`
