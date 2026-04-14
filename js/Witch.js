@@ -20,16 +20,34 @@ class Witch {
         this.directionX = 0
         this.directionY = 0
 
-        this.speed = 3
-        isMovingDown = true
-        isMovingUp = true
+        this.speed = 10
+        this.isMovingDown = true
+        
         
     }
 
-        automaticMovement() {
-        this.y += this.speed
-        this.node.style.top = `${this.y}px`
-      }
-    }
+  automaticMovement() {
+  if (this.isMovingDown) {
+    this.y += this.speed;
+  } else {
+    this.y -= this.speed;
+  }
+
+  // Update position once
+  this.node.style.top = `${this.y}px`;
+
+  // Bottom boundary
+  if (this.y + this.height >= gameBoxNode.offsetHeight) {
+    this.isMovingDown = false;
+
+    // Top boundary 
+  } else if (this.y <= 0) {
+    this.isMovingDown = true;
+
+  }
+
+ 
+}
+}
 
     

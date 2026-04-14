@@ -1,6 +1,6 @@
 class Collectibles {
 
-    constructor(type, yPosition) {
+    constructor(type, xPosition, yPosition) {
 
     this.type = type
 
@@ -14,7 +14,7 @@ class Collectibles {
     //else if(this.type === "catnip") {this.node.src = "images-in-game/items-game/item-catnip.png"}
     gameBoxNode.append(this.node)
 
-    this.x = 1100
+    this.x = xPosition
     this.y = yPosition
     this.width = 75
     this.height = 75
@@ -25,7 +25,7 @@ class Collectibles {
     this.node.style.top = `${this.y}px`
     this.node.style.position = "absolute"
 
-    this.speed = 3
+    this.speed = 1
 }
 
     automaticMovement() {
