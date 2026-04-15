@@ -7,6 +7,7 @@ const gameScreenNode = document.querySelector("#game-screen");
 const gameOverScreenNode = document.querySelector("#game-over-screen");
 const scoreNode = document.querySelector("#score");
 const livesNode = document.querySelector("#lives");
+
 //Buttons
 
 const startBtnNode = document.querySelector("#start-btn");
@@ -15,6 +16,11 @@ const replayBtnNode = document.querySelector("#replay-btn");
 //Game-box
 
 const gameBoxNode = document.querySelector("#game-box");
+
+//Audio
+
+const meowSoundNode = document.querySelector("#meow-sound")
+const gameMusicNode = document.querySelector("#game-music")
 
 //*GLOBAL GAME VARIABLES
 
@@ -37,7 +43,10 @@ let lives = 9;
 
 function gameStart() {
 
-  clearAllIntervals()
+  clearAllIntervals();
+
+  playGameMusic();
+
   //changing the screens
   startScreenNode.style.display = "none";
   gameScreenNode.style.display = "flex";
@@ -176,6 +185,8 @@ function gameOver() {
   
   clearAllIntervals();
 
+  gameMusicNode.pause();
+
   gameScreenNode.style.display = "none";
   gameOverScreenNode.style.display = "flex";
 }
@@ -198,8 +209,6 @@ function rePlay() {
  
     clearAllIntervals();
     
-   
-
     document.querySelectorAll(".cat, .witch, .collectibles, .obstacles").forEach(el => el.remove());
 
     witchObj = null;
@@ -210,15 +219,37 @@ function rePlay() {
     gameOverScreenNode.style.display = "none";
     gameScreenNode.style.display = "flex";
 
+    gameMusicNode.pause();
+    gameMusicNode.currentTime = 0;
+
     gameStart();
+}
+
+// Sounds Audio
+
+function playMeow() {
+  meowSoundNode.currentTime = 0;
+  meowSoundNode.play();
+}
+
+function playGameMusic () {
+  gameMusicNode.currentTime = 0;
+  gameMusicNode.play();
 }
     
 
  
 //*EVENT LISTENERS
 
-startBtnNode.addEventListener("click", gameStart);
-replayBtnNode.addEventListener("click", rePlay);
+startBtnNode.addEventListener("click", () => {
+  gameStart();
+  playMeow();
+});
+
+replayBtnNode.addEventListener("click", () => {
+  rePlay();
+  playMeow();
+});
 
 document.addEventListener("keydown", (event) => {
     if (event.key === "ArrowLeft") catObj.directionX = -5;
