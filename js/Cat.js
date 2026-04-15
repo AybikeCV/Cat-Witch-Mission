@@ -17,7 +17,8 @@ class Cat {
         this.node.style.top = `${this.y}px`;
         this.node.style.position = "absolute";
 
-        this.node.style.border = "2px dotted black"
+        this.node.style.border = "2px dotted black";
+        this.node.classList.add("cat");
 
         this.directionX = 0
         this.directionY = 0
@@ -129,8 +130,8 @@ for (let i = evilSpellsArray.length - 1; i >= 0; i--) {
 
       if (lives <= 0) {
         clearInterval(gameIntervalId);
-        clearInterval(spawnCollectibleInterval);
-        clearInterval(spawnObstacleInterval);
+        clearInterval(deSpawnCollectibleIntervalId);
+        clearInterval(deSpawnObstacleIntervalId);
 
         gameScreenNode.style.display = "none";
         gameOverScreenNode.style.display = "flex";

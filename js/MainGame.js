@@ -25,6 +25,8 @@ let evilSpellsArray = [];
 let witchObj = null;
 
 let gameIntervalId = null;
+let deSpawnCollectibleIntervalId = null;
+let deSpawnObstacleIntervalId = null
 
 let score = 0;
 let lives = 9;
@@ -34,27 +36,24 @@ let lives = 9;
 //*GLOBAL GAME FUNCTIONS
 
 function gameStart() {
+
+  clearAllIntervals()
   //changing the screens
   startScreenNode.style.display = "none";
   gameScreenNode.style.display = "flex";
 
+  initGame();
   //starting the main game Interval
   gameIntervalId = setInterval(gameLoop, Math.floor(1000 / 60));
-  deSpawnCollectible = setInterval(spawnCollectible, 3000);
-  deSpawnObstacle = setInterval(spawnObstacle, 2000);
-  //Adding the game elements
-
-    witchObj = new Witch();
-    catObj = new Cat();
-
-//clearInterval(gameIntervalId);
-//clearInterval(spawnCollectibleInterval);
-//clearInterval(spawnObstacleInterval); 
   
+  deSpawnCollectibleIntervalId = setInterval(spawnCollectible, 3000);
+  deSpawnObstacleIntervalId = setInterval(spawnObstacle, 2000);
+ 
+    
 }
 
 //UI
-  function addingUI() {
+function addingUI() {
   scoreNode.textContent = `Score: ${score}`;
   livesNode.textContent = `Lives: ${lives}`; }
 
@@ -143,7 +142,6 @@ function deSpawnCollectible() {
 }
 
 
-
 //*Obstacles
 
 function spawnObstacle() {
@@ -163,13 +161,64 @@ function deSpawnObstacle() {
     }
   });
 }
+
+function clearAllIntervals() {
+  clearInterval(gameIntervalId);
+  clearInterval(deSpawnCollectibleIntervalId);
+  clearInterval(deSpawnObstacleIntervalId);
+
+  gameIntervalId = null;
+  deSpawnCollectibleIntervalId = null;
+  deSpawnObstacleIntervalId = null;
+
+}
+function gameOver() {
+  
+  clearAllIntervals();
+
+  gameScreenNode.style.display = "none";
+  gameOverScreenNode.style.display = "flex";
+}
+
+function initGame() {
+  witchObj = new Witch();
+  catObj = new Cat();
+
+  collectiblesArray = [];
+  evilSpellsArray = [];
+
+  score = 0;
+  lives = 9;
+
+  addingUI();
+}
+
+
+function rePlay() {
+ 
+    clearAllIntervals();
+    
+   
+
+    document.querySelectorAll(".cat, .witch, .collectibles, .obstacles").forEach(el => el.remove());
+
+    witchObj = null;
+    catObj = null;
+    collectiblesArray = [];
+    evilSpellsArray = [];
+  
+    gameOverScreenNode.style.display = "none";
+    gameScreenNode.style.display = "flex";
+
+    gameStart();
+}
     
 
  
 //*EVENT LISTENERS
 
 startBtnNode.addEventListener("click", gameStart);
-replayBtnNode.addEventListener("click", gameStart);
+replayBtnNode.addEventListener("click", rePlay);
 
 document.addEventListener("keydown", (event) => {
     if (event.key === "ArrowLeft") catObj.directionX = -5;
@@ -185,4 +234,4 @@ document.addEventListener("keyup", (event) => {
   if (event.key === "ArrowDown") catObj.directionY = 0;
 })
 
-//*PLANNING
+

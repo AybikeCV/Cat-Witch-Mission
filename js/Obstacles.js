@@ -16,7 +16,8 @@ class Obstacles {
     this.node.style.top = `${this.y}px`;
     this.node.style.position = "absolute";
 
-    this.node.style.border = "2px dotted black"
+    this.node.style.border = "2px dotted black";
+    this.node.classList.add("obstacles");
 
 
     this.speed = 2

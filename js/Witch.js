@@ -17,6 +17,8 @@ class Witch {
         this.node.style.top = `${this.y}px`;
         this.node.style.position = "absolute";
 
+        this.node.classList.add("witch");
+
         this.directionX = 0
         this.directionY = 0
 
