@@ -10,17 +10,20 @@ class Obstacles {
     this.width = 60
     this.height = 60
 
-    this.node.style.width = `${this.width}px`
-    this.node.style.height = `${this.height}px`
-    this.node.style.left = `${this.x}px`
-    this.node.style.top = `${this.y}px`
-    this.node.style.position = "absolute"
+    this.node.style.width = `${this.width}px`;
+    this.node.style.height = `${this.height}px`;
+    this.node.style.left = `${this.x}px`;
+    this.node.style.top = `${this.y}px`;
+    this.node.style.position = "absolute";
 
-    this.speed = 1
+    this.node.style.border = "2px dotted black"
+
+
+    this.speed = 2
 }
 
     automaticMovement() {
-        this.x += this.speed
+        this.x -= this.speed
         this.node.style.left = `${this.x}px`
     }
 

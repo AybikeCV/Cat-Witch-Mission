@@ -17,6 +17,8 @@ class Cat {
         this.node.style.top = `${this.y}px`;
         this.node.style.position = "absolute";
 
+        this.node.style.border = "2px dotted black"
+
         this.directionX = 0
         this.directionY = 0
     }
@@ -49,55 +51,175 @@ class Cat {
     }
 
 
+    didCollide(collectibles) {
+
+  return (
+    this.x < collectibles.x + collectibles.width &&
+    this.x + this.width > collectibles.x &&
+    this.y < collectibles.y + collectibles.height &&
+    this.y + this.height > collectibles.y
+  );
+
+    }
+    
+    didCollide(obsctacles) {
+  return (
+    this.x < obsctacles.x + obsctacles.width &&
+    this.x + this.width > obsctacles.x &&
+    this.y < obsctacles.y + obsctacles.height &&
+    this.y + this.height > obsctacles.y
+  );
+}
+
+didCollideCollectibles() {
+      /*collectiblesArray.forEach((collectibles, index) => {
+  if(this.didCollide(collectibles)) {
+    score += 10;
+    addingUI();
+    collectibles.node.remove();
+    collectiblesArray.splice(index, 1);
+  }
+}
+);*/
+
+for (let i = collectiblesArray.length - 1; i >= 0; i--) {
+    let collectible = collectiblesArray[i];
+
+    if (this.didCollide(collectible)) {
+      score += 10;
+      addingUI();
+
+      collectible.node.remove();
+      collectiblesArray.splice(i, 1);
+    }
+  }
+}
+
+didCollideObstacles() {
+      /*evilSpellsArray.forEach((obstacles, index) => {
+  
+  if(this.didCollide(obstacles)) {
+    lives -= 1;
+    addingUI();
+    obstacles.node.remove();
+    evilSpellsArray.splice(index, 1);
+
+    if(lives <= 0) {
+      clearInterval(gameIntervalId);
+      gameScreenNode.style.display = "none";
+      gameOverScreenNode.style.display = "flex";
+    }
+  }
+  if (obstacles.x + obstacles.width < 0) {
+      obstacles.node.remove();
+      evilSpellsArray.splice(index, 1);
+    }
+}
+);
+}*/
+for (let i = evilSpellsArray.length - 1; i >= 0; i--) {
+    let obstacle = evilSpellsArray[i];
+
+    if (this.didCollide(obstacle)) {
+      lives -= 1;
+      addingUI();
+
+      obstacle.node.remove();
+      evilSpellsArray.splice(i, 1);
+
+      if (lives <= 0) {
+        clearInterval(gameIntervalId);
+        clearInterval(spawnCollectibleInterval);
+        clearInterval(spawnObstacleInterval);
+
+        gameScreenNode.style.display = "none";
+        gameOverScreenNode.style.display = "flex";
+      }
+    }
+
+    // despawn check
+    if (obstacle.x + obstacle.width < 0) {
+      obstacle.node.remove();
+      evilSpellsArray.splice(i, 1);
+    }
+  }
+
+  }
+
+}
+
+    /*didCollideCollectibles() {
+      collectiblesArray.forEach((collectibles, index) => {
+  if(this.didCollide(collectibles)) {
+    score += 10;
+    addingUI();
+    collectibles.node.remove();
+    collectiblesArray.splice(index, 1);
+  }
+}
+);
+    }*/
+
+    /*didCollideObstacles() {
+      evilSpellsArray.forEach((obstacles, index) => {
+  
+  if(this.didCollide(obstacles)) {
+    lives -= 1;
+    addingUI();
+    obstacles.node.remove();
+    evilSpellsArray.splice(index, 1);
+
+    if(lives <= 0) {
+      clearInterval(gameIntervalId);
+      gameScreenNode.style.display = "none";
+      gameOverScreenNode.style.display = "flex";
+    }
+  }
+  if (obstacles.x + obstacles.width < 0) {
+      obstacles.node.remove();
+      evilSpellsArray.splice(index, 1);
+    }
+}
+);
+}
+    }*/
+
    /* handleKeydown(event) {
     console.log(event.type, event.key);
       if (event.type === "keydown") {
         switch (event.key) {
           case "ArrowLeft":
-            game.player.directionX = -1;
+            catObj.move.directionX = -5;
             break;
           case "ArrowUp":
-            game.player.directionY = -1;
+           catObj.move.directionY = -5;
             break;
           case "ArrowRight":
-            game.player.directionX = 1;
+            catObj.move.directionX = 5;
             break;
           case "ArrowDown":
-            game.player.directionY = 1;
+            catObj.move.directionY = 5;
             break;
         }
       }
         else if (event.type === "keyup") {
           switch (event.key) {
             case "ArrowLeft":
-              game.player.directionX = 0;
+              catObj.move.directionX = 0;
               break;
             case "ArrowUp":
-              game.player.directionY = 0;
+              catObj.move.directionY = 0;
               break;
             case "ArrowRight":
-              game.player.directionX = 0;
+              catObj.move.directionX = 0;
               break;
             case "ArrowDown":
-              game.player.directionY = 0;
+              catObj.move.directionY = 0;
               break;
           }
         }
       }*/
 
 
-    /*didCollide(obstacleObj) {
-
-        if (
-          this.x < obstacleObj.x + obstacleObj.width &&
-          this.x + this.width > obstacleObj.x &&
-          this.y < obstacleObj.y + obstacleObj.height &&
-          this.y + this.height > obstacleObj.y
-        ) {
-          return true;
-        }
-
-    }*/
-
-    }
+ 
 

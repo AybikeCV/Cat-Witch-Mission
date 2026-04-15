@@ -27,11 +27,8 @@ let witchObj = null;
 let gameIntervalId = null;
 
 let score = 0;
-let lives =3;
-    function addingUI() {
-  scoreNode.textContent = `Score: ${score}`;
-  livesNode.textContent = `Lives: ${lives}`;
-    }
+let lives = 9;
+ 
 
 
 //*GLOBAL GAME FUNCTIONS
@@ -50,60 +47,44 @@ function gameStart() {
     witchObj = new Witch();
     catObj = new Cat();
 
-
-
-    gameLoop();
+//clearInterval(gameIntervalId);
+//clearInterval(spawnCollectibleInterval);
+//clearInterval(spawnObstacleInterval); 
   
 }
 
+//UI
+  function addingUI() {
+  scoreNode.textContent = `Score: ${score}`;
+  livesNode.textContent = `Lives: ${lives}`; }
+
 function gameLoop() {
-  
-witchObj.automaticMovement();
+
+  witchObj.automaticMovement();
 //witchMovement();
+  witchWallCollisionCheck();
+
+
+  collectiblesArray.forEach((collectibles) => {
+collectibles.automaticMovement();
+});
+
+  evilSpellsArray.forEach((obstacle) => {
+  obstacle.automaticMovement();
+});
+
 catObj.move();
 //catObj.updatePosition();
-addingUI()
+//catObj.didCollide(collectibles);
+//catObj.didCollide(obstacles);
+catObj.didCollideCollectibles();
+catObj.didCollideObstacles();
+
 deSpawnCollectible();
 deSpawnObstacle();
 
+addingUI();
 
-//Collectibles be in function then in the loop
-collectiblesArray.forEach((collectibles, index) => {
-  if(catObj.didCollide(collectibles)) {
-    score += 10;
-    addingUI();
-    collectibles.node.remove();
-    collectiblesArray.splice(index, 1);
-  }
-}
-);
-
-collectiblesArray.forEach((collectibles) => {
-  collectibles.automaticMovement();
-});
-
-
-// evil spells be in function then in the loop
-evilSpellsArray.forEach((obstacles, index) => {
-  
-  if(catObj.didCollide(obstacles)) {
-    lives -= 1;
-    addingUI();
-    obstacles.node.remove();
-    evilSpellsArray.splice(index, 1);
-
-    if(lives <= 0) {
-      clearInterval(gameIntervalId);
-      gameScreenNode.style.display = "none";
-      gameOverScreenNode.style.display = "flex";
-    }
-  }
-  if (spell.x + spell.width < 0) {
-      spell.node.remove();
-      evilSpellsArray.splice(index, 1);
-    }
-}
-);
 }
 
 
@@ -161,17 +142,15 @@ function deSpawnCollectible() {
   });
 }
 
+
+
 //*Obstacles
 
 function spawnObstacle() {
-  const randomXPosition = Math.floor(
-    Math.random() * gameBoxNode.offsetWidth,
-  );
-
-  const randomYPosition = Math.floor(
-    Math.random() * gameBoxNode.offsetHeight,
-  );
-
+  
+  const randomXPosition = Math.floor(Math.random() * gameBoxNode.offsetWidth);
+  const randomYPosition = Math.floor(Math.random() * gameBoxNode.offsetHeight);
+  
   let newEvilSpell = new Obstacles(randomXPosition, randomYPosition);
   evilSpellsArray.push(newEvilSpell);
 }
@@ -184,10 +163,9 @@ function deSpawnObstacle() {
     }
   });
 }
+    
 
  
-
-
 //*EVENT LISTENERS
 
 startBtnNode.addEventListener("click", gameStart);

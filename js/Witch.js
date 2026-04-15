@@ -20,7 +20,7 @@ class Witch {
         this.directionX = 0
         this.directionY = 0
 
-        this.speed = 10
+        this.speed = 5
         this.isMovingDown = true
         
         

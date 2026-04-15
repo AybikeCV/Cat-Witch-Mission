@@ -19,11 +19,13 @@ class Collectibles {
     this.width = 60
     this.height = 60
 
-    this.node.style.width = `${this.width}px`
-    this.node.style.height = `${this.height}px`
-    this.node.style.left = `${this.x}px`
-    this.node.style.top = `${this.y}px`
-    this.node.style.position = "absolute"
+    this.node.style.width = `${this.width}px`;
+    this.node.style.height = `${this.height}px`;
+    this.node.style.left = `${this.x}px`;
+    this.node.style.top = `${this.y}px`;
+    this.node.style.position = "absolute";
+
+    this.node.style.border = "2px dotted black"
 
     this.speed = 2
 }
