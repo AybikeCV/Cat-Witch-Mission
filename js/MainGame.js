@@ -6,36 +6,42 @@ const startScreenNode = document.querySelector("#start-screen");
 const gameScreenNode = document.querySelector("#game-screen");
 const gameOverScreenNode = document.querySelector("#game-over-screen");
 const scoreNode = document.querySelector("#score");
-const livesNode = document.querySelector("#lives");
+//const livesNode = document.querySelector("#lives");
 
 //Buttons
 
 const startBtnNode = document.querySelector("#start-btn");
 const replayBtnNode = document.querySelector("#replay-btn");
+const soundOnNode = document.querySelector("#sound-on-button");
+const soundOffNode = document.querySelector("#sound-off-button")
 
 //Game-box
 
 const gameBoxNode = document.querySelector("#game-box");
 
-//Audio
+//Audio and lives(hearts)
 
 const meowSoundNode = document.querySelector("#meow-sound")
 const gameMusicNode = document.querySelector("#game-music")
+const heartsNode = document.querySelector("#lives-container")
 
 //*GLOBAL GAME VARIABLES
 
+//characters and items
 let catObj = null;
 let collectiblesArray = [];
 let evilSpellsArray = [];
-
 let witchObj = null;
 
+//game intervalIds
 let gameIntervalId = null;
 let deSpawnCollectibleIntervalId = null;
 let deSpawnObstacleIntervalId = null
 
+//UI
 let score = 0;
 let lives = 9;
+let isSoundOn = true;
  
 
 
@@ -61,15 +67,11 @@ function gameStart() {
     
 }
 
-//UI
-function addingUI() {
-  scoreNode.textContent = `Score: ${score}`;
-  livesNode.textContent = `Lives: ${lives}`; }
-
 function gameLoop() {
 
   witchObj.automaticMovement();
-//witchMovement();
+
+  //witchMovement();
   witchWallCollisionCheck();
 
 
@@ -185,8 +187,6 @@ function gameOver() {
   
   clearAllIntervals();
 
-  gameMusicNode.pause();
-
   gameScreenNode.style.display = "none";
   gameOverScreenNode.style.display = "flex";
 }
@@ -219,22 +219,48 @@ function rePlay() {
     gameOverScreenNode.style.display = "none";
     gameScreenNode.style.display = "flex";
 
-    gameMusicNode.pause();
-    gameMusicNode.currentTime = 0;
 
     gameStart();
 }
 
-// Sounds Audio
+//UI
+function addingUI() {
+  scoreNode.textContent = `Score: ${score}`;
+  //livesNode.textContent = `Lives: ${lives}`; 
+  minusLives();
+}
 
+// Sounds Audio
 function playMeow() {
+
+  if (!isSoundOn) return;
+
   meowSoundNode.currentTime = 0;
   meowSoundNode.play();
 }
 
 function playGameMusic () {
+
+  if (!isSoundOn) return;
+
   gameMusicNode.currentTime = 0;
   gameMusicNode.play();
+}
+
+//Lives(Hearts)
+function minusLives() {
+  heartsNode.innerHTML = "";
+
+  for (let i = 0; i < lives; i++) {
+    const heart = document.createElement("div");
+
+    if (i < lives) {
+      heart.textContent = "❤️";
+    } else {
+      heart.textContent = "💔"
+    }
+    heartsNode.append(heart)
+  }
 }
     
 
@@ -252,17 +278,27 @@ replayBtnNode.addEventListener("click", () => {
 });
 
 document.addEventListener("keydown", (event) => {
-    if (event.key === "ArrowLeft") catObj.directionX = -5;
+  if (event.key === "ArrowLeft") catObj.directionX = -5;
   if (event.key === "ArrowRight") catObj.directionX = 5;
   if (event.key === "ArrowUp") catObj.directionY = -5;
   if (event.key === "ArrowDown") catObj.directionY = 5;
 });
 
 document.addEventListener("keyup", (event) => {
-    if (event.key === "ArrowLeft") catObj.directionX = 0;
+  if (event.key === "ArrowLeft") catObj.directionX = 0;
   if (event.key === "ArrowRight") catObj.directionX = 0;
   if (event.key === "ArrowUp") catObj.directionY = 0;
   if (event.key === "ArrowDown") catObj.directionY = 0;
 })
 
+soundOnNode.addEventListener("click", () => {
+  isSoundOn = true,
+  meowSoundNode.play();
+  gameMusicNode.play();
+})
 
+soundOffNode.addEventListener("click", () => {
+  isSoundOn = false;
+  meowSoundNode.pause();
+  gameMusicNode.pause();
+})

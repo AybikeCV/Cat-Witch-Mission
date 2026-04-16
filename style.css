@@ -109,12 +109,38 @@ body {
     margin-bottom: 0px;
 }
 
+#sound-on-button, 
+#sound-off-button {
+    font-size: 24px;       
+    padding: 10px 15px;     
+    margin: 5px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    background-color: #333;
+    color: white;
+    transition: 0.2s;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#sound-on-button:hover,
+#sound-off-button:hover {
+    background-color: #555;
+    transform: scale(1.1);
+}
+
+#lives-container {
+    display: flex;
+    gap: 5px;   
+}
+
 #game-box {
     background-image: url(images-in-game/backgrounds-game/game-screen/4.jpg);
     background-size: cover;
     width: 1220px;
     height: 710px;
-    margin: 100px;
+    margin: 50px;
     border: 5px solid darkolivegreen;
     border-radius: 10px;
 
@@ -129,12 +155,12 @@ body {
 
 #game-over-screen {
     background-image: url("images-in-game/backgrounds-game/game-over-screen/castleinthedarkflippeddown-gameover2.png");
-    background-size: cover;
     width: 1220px;
     height: 710px;
     margin: 100px;
     border: 5px solid darkolivegreen;
     border-radius: 10px;
+    justify-content: center;
     align-items: center;
     margin-top: 10px;
     margin-bottom: 5px;
