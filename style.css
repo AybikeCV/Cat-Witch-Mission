@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    background-image: url("images-in-game/backgrounds-game/game-start/HR_Dark Gothic Castle.png");
+    background-image: url("./images-in-game/backgrounds-game/game-start/HR_Dark Gothic Castle.png");
     background-size: auto;
 }
 
@@ -136,7 +136,7 @@ body {
 }
 
 #game-box {
-    background-image: url(images-in-game/backgrounds-game/game-screen/4.jpg);
+    background-image: url(./images-in-game/backgrounds-game/game-screen/4.jpg);
     background-size: cover;
     width: 1220px;
     height: 710px;
@@ -154,7 +154,7 @@ body {
 }
 
 #game-over-screen {
-    background-image: url("images-in-game/backgrounds-game/game-over-screen/castleinthedarkflippeddown-gameover2.png");
+    background-image: url("./images-in-game/backgrounds-game/game-over-screen/castleinthedarkflippeddown-gameover2.png");
     width: 1220px;
     height: 710px;
     margin: 100px;

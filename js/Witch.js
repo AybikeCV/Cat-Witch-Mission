@@ -3,7 +3,7 @@ class Witch {
     constructor() {
 
         this.node = document.createElement("img");
-        this.node.src = "images-in-game/evil-witch-game/Clarice-noctural-creature-hunter-Run.png";
+        this.node.src = "./images-in-game/evil-witch-game/Clarice-noctural-creature-hunter-Run.png";
         gameBoxNode.append(this.node);
 
         this.x = 1070;

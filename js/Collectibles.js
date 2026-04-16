@@ -6,10 +6,10 @@ class Collectibles {
 
     this.node = document.createElement("img")
     if(this.type === "potion") {
-        this.node.src = "images-in-game/items-game/item-potion.png"
+        this.node.src = "./images-in-game/items-game/item-potion.png"
 }
     else if(this.type === "book") {
-        this.node.src = "images-in-game/items-game/item-book.png"
+        this.node.src = "./images-in-game/items-game/item-book.png"
 }
     //else if(this.type === "catnip") {this.node.src = "images-in-game/items-game/item-catnip.png"}
     gameBoxNode.append(this.node)

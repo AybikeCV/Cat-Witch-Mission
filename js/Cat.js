@@ -3,7 +3,7 @@ class Cat {
     constructor() {
 
         this.node = document.createElement("img");
-        this.node.src = "images-in-game/cats-game/cat-witch-flying.png";
+        this.node.src = "./images-in-game/cats-game/cat-witch-flying.png";
         gameBoxNode.append(this.node);
 
         this.x = 50;

@@ -2,7 +2,7 @@ class Obstacles {
 
     constructor(xPosition, yPosition) {
     this.node = document.createElement("img")
-    this.node.src = "images-in-game/items-game/item-evil-spell.png"
+    this.node.src = "./images-in-game/items-game/item-evil-spell.png"
     gameBoxNode.append(this.node)
 
     this.x = xPosition
