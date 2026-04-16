@@ -74,7 +74,6 @@ function gameLoop() {
   //witchMovement();
   witchWallCollisionCheck();
 
-
   collectiblesArray.forEach((collectibles) => {
 collectibles.automaticMovement();
 });
@@ -83,12 +82,18 @@ collectibles.automaticMovement();
   obstacle.automaticMovement();
 });
 
+if (witchObj.mode !== "scare" && Math.random() < 0.002) {
+  //console.log("triggerPlease")
+  witchObj.triggerScare();
+}
+
 catObj.move();
 //catObj.updatePosition();
 //catObj.didCollide(collectibles);
 //catObj.didCollide(obstacles);
 catObj.didCollideCollectibles();
 catObj.didCollideObstacles();
+catObj.didCollideWitch();
 
 deSpawnCollectible();
 deSpawnObstacle();
@@ -263,8 +268,6 @@ function minusLives() {
   }
 }
     
-
- 
 //*EVENT LISTENERS
 
 startBtnNode.addEventListener("click", () => {

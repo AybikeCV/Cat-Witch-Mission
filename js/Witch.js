@@ -17,39 +17,78 @@ class Witch {
         this.node.style.top = `${this.y}px`;
         this.node.style.position = "absolute";
 
+        this.node.style.border = "2px dotted black";
         this.node.classList.add("witch");
 
         this.directionX = 0
         this.directionY = 0
 
         this.speed = 5
-        this.isMovingDown = true
         
-        
+        this.mode = "vertical";
+        this.isMovingDown = true;  
     }
 
   automaticMovement() {
-  if (this.isMovingDown) {
+
+    if (this.mode !== "vertical") 
+      return;
+  
+    if (this.isMovingDown) {
     this.y += this.speed;
-  } else {
+    } else {
     this.y -= this.speed;
-  }
+    }
 
-  // Update position once
-  this.node.style.top = `${this.y}px`;
+     // Update position once
+    this.node.style.top = `${this.y}px`;
 
-  // Bottom boundary
-  if (this.y + this.height >= gameBoxNode.offsetHeight) {
+    // Bottom boundary
+    if (this.y + this.height >= gameBoxNode.offsetHeight) {
     this.isMovingDown = false;
 
     // Top boundary 
-  } else if (this.y <= 0) {
+    } else if (this.y <= 0) {
     this.isMovingDown = true;
-
-  }
-
- 
+  } 
 }
-}
+
+   triggerScare() {
+
+    if (this.mode === "scare") return;
+
+  this.mode = "scare";
+
+  let jumps = 0;
+  const maxJumps = 6;
+
+  const teleportInterval = setInterval(() => {
+
+    this.isMovingDown = false;
 
     
+    this.x = Math.random() * (gameBoxNode.offsetWidth - this.width);
+    this.y = Math.random() * (gameBoxNode.offsetHeight - this.height);
+
+    this.node.style.left = `${this.x}px`;
+    this.node.style.top = `${this.y}px`;
+
+    jumps++;
+
+    if (jumps >= maxJumps) {
+      clearInterval(teleportInterval);
+
+      this.mode = "vertical";
+      this.isMovingDown = true;
+      this.node.style.left = `${this.x}px`;
+      this.node.style.top = `${this.y}px`
+    }
+
+  }, 400);
+
+  }
+   
+ 
+ 
+
+}
