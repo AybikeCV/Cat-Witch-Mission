@@ -44,6 +44,10 @@ Our cat witch, as a loyal companion, needs your help in order to save its witch 
 - Royalty free audios and images
 - Peaphoto
 - Local Storage
+<<<<<<< HEAD
+=======
+- AI (Claude, ChatGPT) to understand and solve the gameloop and collision bugs
+>>>>>>> 8fd645c0f10c78069a51e5437a0c4f36259929e3
 
 # States
 
@@ -167,4 +171,8 @@ Our cat witch, as a loyal companion, needs your help in order to save its witch 
 [Link](https://docs.google.com/presentation/d/1cQei1uk7VAoKQbtL8T3eWxomaIfR0N_KStBGbU7Kv4U/edit?usp=sharing)
 
 ## Deploy
+<<<<<<< HEAD
 [Link](https://aybikecv.github.io/Cat-Witch-Mission/)
+=======
+[Link](https://aybikecv.github.io/Cat-Witch-Mission/)
+>>>>>>> 8fd645c0f10c78069a51e5437a0c4f36259929e3
