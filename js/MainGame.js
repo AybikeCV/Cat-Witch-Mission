@@ -21,8 +21,8 @@ const gameBoxNode = document.querySelector("#game-box");
 
 //Audio and lives(hearts)
 
-const meowSoundNode = document.querySelector("#meow-sound")
-const gameMusicNode = document.querySelector("#game-music")
+const meowSoundNode = document.querySelector("#meow-sound");
+const gameMusicNode = document.querySelector("#game-music");
 const heartsNode = document.querySelector("#lives-container")
 
 //*GLOBAL GAME VARIABLES
@@ -42,8 +42,6 @@ let deSpawnObstacleIntervalId = null
 let score = 0;
 let lives = 9;
 let isSoundOn = true;
- 
-
 
 //*GLOBAL GAME FUNCTIONS
 
@@ -62,9 +60,7 @@ function gameStart() {
   gameIntervalId = setInterval(gameLoop, Math.floor(1000 / 60));
   
   deSpawnCollectibleIntervalId = setInterval(spawnCollectible, 3000);
-  deSpawnObstacleIntervalId = setInterval(spawnObstacle, 2000);
- 
-    
+  deSpawnObstacleIntervalId = setInterval(spawnObstacle, 2000);   
 }
 
 function gameLoop() {
@@ -79,47 +75,26 @@ collectibles.automaticMovement();
 });
 
   evilSpellsArray.forEach((obstacle) => {
-  obstacle.automaticMovement();
+obstacle.automaticMovement();
 });
 
-if (witchObj.mode !== "scare" && Math.random() < 0.002) {
+  if (witchObj.mode !== "scare" && Math.random() < 0.002) {
   //console.log("triggerPlease")
   witchObj.triggerScare();
 }
 
-catObj.move();
-//catObj.updatePosition();
-//catObj.didCollide(collectibles);
-//catObj.didCollide(obstacles);
-catObj.didCollideCollectibles();
-catObj.didCollideObstacles();
-catObj.didCollideWitch();
+  catObj.move();
+  catObj.didCollideCollectibles();
+  catObj.didCollideObstacles();
+  catObj.didCollideWitch();
 
-deSpawnCollectible();
-deSpawnObstacle();
+  deSpawnCollectible();
+  deSpawnObstacle();
 
-addingUI();
-
+  addingUI();
 }
 
-
-//*Witch
-/*function witchMovement() {
-  if (witchObj.isMovingDown === true) {
-    witchObj.y += witchObj.speed;
-    witchObj.node.style.top = `${witchObj.y}px`;
-
-    return isMovingDown;
-  }
-
-  if (witchObj.isMovingUp === true) {
-    witchObj.y -= witchObj.speed;
-    witchObj.node.style.top = `${witchObj.y}px`;
-
-    return isMovingUp;
-  }
-}*/
-
+//*WitchWallCollision
 function witchWallCollisionCheck() {
   if (
     witchObj.y + witchObj.height >= gameBoxNode.offsetHeight) {
@@ -127,7 +102,6 @@ function witchWallCollisionCheck() {
     }
   if (witchObj.y <= 0) {
     (witchObj.isMovingDown = true);
-    //witchObj.isMovingDown = true;
   }
 }
 
@@ -135,14 +109,14 @@ function witchWallCollisionCheck() {
 
 function spawnCollectible() {
 
-    const randomXPosition = Math.floor(Math.random() * gameBoxNode.offsetWidth);
-    const randomYPosition = Math.floor(Math.random() * gameBoxNode.offsetHeight);
+  const randomXPosition = Math.floor(Math.random() * gameBoxNode.offsetWidth);
+  const randomYPosition = Math.floor(Math.random() * gameBoxNode.offsetHeight);
  
-    let newCollectiblePotion = new Collectibles("potion", randomXPosition, randomYPosition);
+  let newCollectiblePotion = new Collectibles("potion", randomXPosition, randomYPosition);
   collectiblesArray.push(newCollectiblePotion);
 
-    const randomXPosition2 = Math.floor(Math.random() * gameBoxNode.offsetWidth);
-    const randomYPosition2 = Math.floor(Math.random() * gameBoxNode.offsetHeight);
+  const randomXPosition2 = Math.floor(Math.random() * gameBoxNode.offsetWidth);
+  const randomYPosition2 = Math.floor(Math.random() * gameBoxNode.offsetHeight);
 
   let newCollectibleBook = new Collectibles("book", randomXPosition2, randomYPosition2);
   collectiblesArray.push(newCollectibleBook);
@@ -150,13 +124,13 @@ function spawnCollectible() {
 
 function deSpawnCollectible() {
   collectiblesArray.forEach((collectibles, index) => {
+  
     if (collectibles.x <= 0) {
       collectibles.node.remove();
       collectiblesArray.splice(index, 1);
     }
   });
 }
-
 
 //*Obstacles
 
@@ -171,7 +145,8 @@ function spawnObstacle() {
 
 function deSpawnObstacle() {
   evilSpellsArray.forEach((obstacles, index) => {
-    if (obstacles.x <= 0) {
+  
+  if (obstacles.x <= 0) {
       obstacles.node.remove();
       evilSpellsArray.splice(index, 1);
     }
@@ -186,8 +161,8 @@ function clearAllIntervals() {
   gameIntervalId = null;
   deSpawnCollectibleIntervalId = null;
   deSpawnObstacleIntervalId = null;
-
 }
+
 function gameOver() {
   
   clearAllIntervals();
@@ -212,26 +187,26 @@ function initGame() {
 
 function rePlay() {
  
-    clearAllIntervals();
+  clearAllIntervals();
     
-    document.querySelectorAll(".cat, .witch, .collectibles, .obstacles").forEach(el => el.remove());
+  document.querySelectorAll(".cat, .witch, .collectibles, .obstacles").forEach(el => el.remove());
 
-    witchObj = null;
-    catObj = null;
-    collectiblesArray = [];
-    evilSpellsArray = [];
+  witchObj = null;
+  catObj = null;
+  collectiblesArray = [];
+  evilSpellsArray = [];
   
-    gameOverScreenNode.style.display = "none";
-    gameScreenNode.style.display = "flex";
+  gameOverScreenNode.style.display = "none";
+  gameScreenNode.style.display = "flex";
 
 
-    gameStart();
+  gameStart();
 }
 
 //UI
 function addingUI() {
+  
   scoreNode.textContent = `Score: ${score}`;
-  //livesNode.textContent = `Lives: ${lives}`; 
   minusLives();
 }
 
@@ -241,6 +216,7 @@ function playMeow() {
   if (!isSoundOn) return;
 
   meowSoundNode.currentTime = 0;
+  meowSoundNode.volume = 0.1;
   meowSoundNode.play();
 }
 
@@ -249,6 +225,7 @@ function playGameMusic () {
   if (!isSoundOn) return;
 
   gameMusicNode.currentTime = 0;
+  gameMusicNode.volume = 0.1;
   gameMusicNode.play();
 }
 
@@ -259,12 +236,13 @@ function minusLives() {
   for (let i = 0; i < lives; i++) {
     const heart = document.createElement("div");
 
-    if (i < lives) {
-      heart.textContent = "❤️";
-    } else {
-      heart.textContent = "💔"
-    }
-    heartsNode.append(heart)
+  if (i < lives) {
+    heart.textContent = "❤️";
+  } 
+  else {
+    heart.textContent = "💔"
+  }
+    heartsNode.append(heart);
   }
 }
     
@@ -292,16 +270,16 @@ document.addEventListener("keyup", (event) => {
   if (event.key === "ArrowRight") catObj.directionX = 0;
   if (event.key === "ArrowUp") catObj.directionY = 0;
   if (event.key === "ArrowDown") catObj.directionY = 0;
-})
+});
 
 soundOnNode.addEventListener("click", () => {
-  isSoundOn = true,
+  isSoundOn = true;
   meowSoundNode.play();
   gameMusicNode.play();
-})
+});
 
 soundOffNode.addEventListener("click", () => {
   isSoundOn = false;
   meowSoundNode.pause();
   gameMusicNode.pause();
-})
+});

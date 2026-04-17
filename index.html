@@ -11,24 +11,22 @@
 
         <!--START SCREEN-->
         <div id="start-screen" class="container">
-            <img src="./images-in-game/items-game/item-title-text.png" width="500" alt="logo">
+            <img src="./images-in-game/items-game/item-title-text.png" width="500" height="100" alt="logo">
             <p class="greetings">Welcome to the Cat Witch Mission</p>
             <br>
-            <p class="story">Our cat witch, as a loyal companion, needs your help in order to save its witch friend which was taken captive by the evil witch. <img src="./images-in-game/evil-witch-game/Clarice-noctural-creature-hunter-Run.png"></p>
-            <p class="choose-character"><!--Choose--> Your Cat
+            <p class="story">Our cat witch, as a loyal companion, needs your help in order to save its witch friend which was taken captive by the evil witch. <img src="./images-in-game/evil-witch-game/Clarice-noctural-creature-hunter-Run.png" height="50"></p>
+            <p class="choose-character">Your Cat
             <br>
-            <img src="./images-in-game/cats-game/cat-witch-flying.png"> <!--<img src="images-in-game/cats-game/cat-witch-vampire.png">-->
+            <img src="./images-in-game/cats-game/cat-witch-flying.png" height="50">
             </p>
-            <p class="rules">How to Play  <!--add img of the arrow keys and other elements images-->
+            <p class="rules">How to Play
                 <ul class="game-play-rules">
                     <li>Move the cat witch by using the arrow keys.</li>
-                    <li>Collect the potions and the spell books for 10 points. <img src"images-in-game/items-game/item-potion.png"> <img src="./images-in-game/items-game/item-book.png"></li>
-                    <!--Collect the catnip for 2 seconds boost and extra 5 points. <img src="images-in-game/items-game/item-catnip.png"> </li>-->
-                    <li>Avoid the evil spells shots from the evil witch.<img src="./images-in-game/items-game/item-evil-spell.png"> </li>
-                    <!--<li>Try to avoid sleep symbols as it stops your movement for 3 seconds. img src="images-in-game/items-game/item-sleep-spell.png"> </li>-->
+                    <li>Collect the potions and the spell books for 10 points. <img src="./images-in-game/items-game/item-potion.png" height="25"> <img src="./images-in-game/items-game/item-book.png" height="25"></li>
+                    <li>Avoid the evil spells shots from the evil witch.<img src="./images-in-game/items-game/item-evil-spell.png" height="25"> </li>
                     <li>If you hit the evil spells 9 times: GAME OVER! (Why 9? Cause you are helping a cat and why not?!)</li>
                     <li>WARNING: Avoid also the evil witch touching you, otherwise you lose your lives faster.</li>
-                    <li>If you want to play again, just simply click on the replay button. <img src="./images-in-game/items-game/item-button-replay.png"> </li>
+                    <li>If you want to play again, just simply click on the replay button.</li>
                 </ul>
             </p>
             <button id="start-btn">Start</button>
@@ -37,23 +35,21 @@
 
         <!--GAME SCREEN-->
         <div id="game-screen" class="container">
-            <!-- Game elements like score, lives and if possible, other UI elements should be here (inside the game-scree but outside the game-box)-->
             <audio id="game-music" src="./sounds-in-game/astrogalaxymoon-the-black-cat-417986.mp3" loop></audio>
-            <p id="score">Score: <span id="score">0 <!--<img src="images-in-game/items-game/item-game-score.png">--></span></p>
-            <!--<p id="lives">Lives: <span id="lives">9--> <!--<img src="images-in-game/items-game/item-heart.png">--><!--</span></p>-->
+            <p id="score">Score: <span id="score">0</span></p>
             <div id="lives-container"></div>
+            <div id="sound-buttons">
             <button id="sound-on-button">🔊</button>
             <button id="sound-off-button">🔇</button>
-            <div id="game-box">
-            <!-- Game elements will be added here via JS and DOM manipulation-->    
             </div>
-
+            <div id="game-box">   
+            </div>
         </div>
 
         <!--GAME OVER SCREEN-->
         <div id="game-over-screen" class="container">
-            <img src="./images-in-game/items-game/item-gameOver-text.png" width="500" alt="logo">
-            <p class="game-over-text">Cat Witch Failed. Evil Witch Succeeded</p>
+            <img src="./images-in-game/items-game/item-gameOver-text.png" width="500" height="200" alt="logo">
+            <p class="game-over-text">Cat Witch Failed. Evil Witch Succeeded!!!</p>
             <button id="replay-btn">Replay</button>
         </div>
 

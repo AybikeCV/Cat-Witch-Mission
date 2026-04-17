@@ -6,10 +6,10 @@ class Witch {
         this.node.src = "./images-in-game/evil-witch-game/Clarice-noctural-creature-hunter-Run.png";
         gameBoxNode.append(this.node);
 
-        this.x = 1070;
+        this.x = 460;
         this.y = 0;
-        this.width = 125;
-        this.height = 150;
+        this.width = 65;
+        this.height = 75;
         
         this.node.style.width = `${this.width}px`;
         this.node.style.height = `${this.height}px`;
@@ -17,13 +17,13 @@ class Witch {
         this.node.style.top = `${this.y}px`;
         this.node.style.position = "absolute";
 
-        this.node.style.border = "2px dotted black";
+        this.node.style.border = "0.5px dotted black";
         this.node.classList.add("witch");
 
-        this.directionX = 0
-        this.directionY = 0
+        this.directionX = 0;
+        this.directionY = 0;
 
-        this.speed = 5
+        this.speed = 4;
         
         this.mode = "vertical";
         this.isMovingDown = true;  
@@ -60,7 +60,7 @@ class Witch {
   this.mode = "scare";
 
   let jumps = 0;
-  const maxJumps = 6;
+  const maxJumps = 4;
 
   const teleportInterval = setInterval(() => {
 

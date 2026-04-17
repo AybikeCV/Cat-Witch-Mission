@@ -7,9 +7,9 @@ class Cat {
         gameBoxNode.append(this.node);
 
         this.x = 50;
-        this.y = 300;
-        this.width = 125;
-        this.height = 125;
+        this.y = 200;
+        this.width = 65;
+        this.height = 65;
         
         this.node.style.width = `${this.width}px`;
         this.node.style.height = `${this.height}px`;
@@ -17,11 +17,11 @@ class Cat {
         this.node.style.top = `${this.y}px`;
         this.node.style.position = "absolute";
 
-        this.node.style.border = "2px dotted black";
+        this.node.style.border = "0.5px dotted black";
         this.node.classList.add("cat");
 
-        this.directionX = 0
-        this.directionY = 0
+        this.directionX = 0;
+        this.directionY = 0;
 
         this.isUndefeated = false;
     }
@@ -32,19 +32,19 @@ class Cat {
          this.y += this.directionY;
         
         if (this.x < 10) {
-      this.x = 10;
+          this.x = 10;
         }
         if (this.y < 10) {
-      this.y= 10;
-    }
+          this.y= 10;
+        }
         if (this.x > gameBoxNode.offsetWidth - this.width - 10) {
-      this.x = gameBoxNode.offsetWidth - this.width - 10;
-    }
+          this.x = gameBoxNode.offsetWidth - this.width - 10;
+        }
          if (this.y > gameBoxNode.offsetHeight - this.height - 10) {
-      this.y = gameBoxNode.offsetHeight - this.height - 10;
-    }
+          this.y = gameBoxNode.offsetHeight - this.height - 10;
+        }
 
-        this.updatePosition()
+        this.updatePosition();
     }
 
     updatePosition(){
@@ -56,44 +56,35 @@ class Cat {
 
     didCollide(collectibles) {
   return (
-    this.x < collectibles.x + collectibles.width &&
-    this.x + this.width > collectibles.x &&
-    this.y < collectibles.y + collectibles.height &&
-    this.y + this.height > collectibles.y
+        this.x < collectibles.x + collectibles.width &&
+        this.x + this.width > collectibles.x &&
+        this.y < collectibles.y + collectibles.height &&
+        this.y + this.height > collectibles.y
   );
 
     }
     
     didCollide(obsctacles) {
   return (
-    this.x < obsctacles.x + obsctacles.width &&
-    this.x + this.width > obsctacles.x &&
-    this.y < obsctacles.y + obsctacles.height &&
-    this.y + this.height > obsctacles.y
+        this.x < obsctacles.x + obsctacles.width &&
+        this.x + this.width > obsctacles.x &&
+        this.y < obsctacles.y + obsctacles.height &&
+        this.y + this.height > obsctacles.y
   );
 }
 
     didCollide(witchObj) {
   return (
-    this.x < witchObj.x + witchObj.width &&
-    this.x + this.width > witchObj.x &&
-    this.y < witchObj.y + witchObj.height &&
-    this.y + this.height > witchObj.y
+        this.x < witchObj.x + witchObj.width &&
+        this.x + this.width > witchObj.x &&
+        this.y < witchObj.y + witchObj.height &&
+        this.y + this.height > witchObj.y
   );
 }
 
 didCollideCollectibles() {
-      /*collectiblesArray.forEach((collectibles, index) => {
-  if(this.didCollide(collectibles)) {
-    score += 10;
-    addingUI();
-    collectibles.node.remove();
-    collectiblesArray.splice(index, 1);
-  }
-}
-);*/
 
-for (let i = collectiblesArray.length - 1; i >= 0; i--) {
+    for (let i = collectiblesArray.length - 1; i >= 0; i--) {
     let collectible = collectiblesArray[i];
 
     if (this.didCollide(collectible)) {
@@ -107,28 +98,8 @@ for (let i = collectiblesArray.length - 1; i >= 0; i--) {
 }
 
 didCollideObstacles() {
-      /*evilSpellsArray.forEach((obstacles, index) => {
-  
-  if(this.didCollide(obstacles)) {
-    lives -= 1;
-    addingUI();
-    obstacles.node.remove();
-    evilSpellsArray.splice(index, 1);
 
-    if(lives <= 0) {
-      clearInterval(gameIntervalId);
-      gameScreenNode.style.display = "none";
-      gameOverScreenNode.style.display = "flex";
-    }
-  }
-  if (obstacles.x + obstacles.width < 0) {
-      obstacles.node.remove();
-      evilSpellsArray.splice(index, 1);
-    }
-}
-);
-}*/
-for (let i = evilSpellsArray.length - 1; i >= 0; i--) {
+    for (let i = evilSpellsArray.length - 1; i >= 0; i--) {
     let obstacle = evilSpellsArray[i];
 
     if (this.didCollide(obstacle)) {
@@ -138,13 +109,13 @@ for (let i = evilSpellsArray.length - 1; i >= 0; i--) {
       obstacle.node.remove();
       evilSpellsArray.splice(i, 1);
 
-      if (lives <= 0) {
-        clearInterval(gameIntervalId);
-        clearInterval(deSpawnCollectibleIntervalId);
-        clearInterval(deSpawnObstacleIntervalId);
+    if (lives <= 0) {
+      clearInterval(gameIntervalId);
+      clearInterval(deSpawnCollectibleIntervalId);
+      clearInterval(deSpawnObstacleIntervalId);
 
-        gameScreenNode.style.display = "none";
-        gameOverScreenNode.style.display = "flex";
+      gameScreenNode.style.display = "none";
+      gameOverScreenNode.style.display = "flex";
       }
     }
 
@@ -173,7 +144,7 @@ for (let i = evilSpellsArray.length - 1; i >= 0; i--) {
 
     setTimeout(() => {
       this.isUndefeated = false;
-    }, 1000);
+    }, 2000); // immune for 2 seconds otherwise witch is really annoying
 
     if (lives <= 0) {
       clearAllIntervals();
