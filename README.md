@@ -44,6 +44,7 @@ Our cat witch, as a loyal companion, needs your help in order to save its witch 
 - Royalty free audios and images
 - Peaphoto
 - Local Storage
+- AI (Claude, ChatGPT) to understand and solve the gameloop and collision bugs
 
 # States
 
