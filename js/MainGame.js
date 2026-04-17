@@ -216,7 +216,7 @@ function playMeow() {
   if (!isSoundOn) return;
 
   meowSoundNode.currentTime = 0;
-  meowSoundNode.volume = 0.1;
+  meowSoundNode.volume = 0.01;
   meowSoundNode.play();
 }
 
@@ -225,7 +225,7 @@ function playGameMusic () {
   if (!isSoundOn) return;
 
   gameMusicNode.currentTime = 0;
-  gameMusicNode.volume = 0.1;
+  gameMusicNode.volume = 0.01;
   gameMusicNode.play();
 }
 
